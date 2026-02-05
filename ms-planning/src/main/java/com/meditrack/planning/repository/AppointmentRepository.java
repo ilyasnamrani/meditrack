@@ -1,0 +1,11 @@
+package com.meditrack.planning.repository;
+
+import com.meditrack.planning.model.Appointment;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
+    List<Appointment> findByDoctorId(Long doctorId);
+    List<Appointment> findByResourceIdAndStartTimeBetween(Long resourceId, LocalDateTime start, LocalDateTime end);
+}
